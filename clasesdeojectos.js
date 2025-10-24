@@ -143,7 +143,7 @@ Requerimientos del reto:
 */
 
 // --- Base de Datos ---
-const usersDatabase = [
+/*const usersDatabase = [
   {
     username: "andres",
     password: "123",
@@ -191,7 +191,7 @@ const password = prompt("¿Cuál es tu contraseña?");
  * @param {string} password - Contraseña ingresada.
  * @returns {object|null} El objeto de usuario si existe, o null si no existe.
  */
-function validarUsuario(username, password) {
+/*function validarUsuario(username, password) {
     // Usamos .find() para simplificar y retornar el objeto completo si coincide.
     // Esto es más limpio y eficiente que usar un bucle for + return true.
     const user = usersDatabase.find(
@@ -200,12 +200,12 @@ function validarUsuario(username, password) {
     return user || null;
 }
 
-/**
+
  * Busca el timeline específico de un usuario.
  * @param {string} username - Nombre de usuario.
  * @returns {object|null} El objeto del timeline del usuario, o null si no se encuentra.
  */
-function buscarTimeline(username) {
+/*function buscarTimeline(username) {
     // Usamos .find() para obtener el timeline del usuario específico.
     return usersTimeline.find(
         timelineEntry => timelineEntry.username.toLowerCase() === username.toLowerCase()
@@ -240,4 +240,40 @@ function signIn(username, password) {
 }
 
 // --- Ejecución del Proceso ---
-signIn(username, password);
+signIn(username, password);*/
+
+const foo = () => setTimeout(() => console.log("bar"), 2000);
+const bar = () => setTimeout(() => console.log("foo"), 3000);
+const baz = () => console.log("baz");
+
+bar();
+foo();
+baz();
+
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    let operationSuccessful = true;
+
+    if (operationSuccessful) {
+      resolve("¡La operación fue exitosa!");
+    } else {
+      reject("Falló la operación");
+    }
+  }, 5000);
+});
+
+promise
+  .then((successMessage) => {
+    console.log(successMessage);
+  })
+  .catch((errorMessage) => {
+    console.log(errorMessage);
+  });
+  
+  function fetchData() {
+  fetch("https://rickandmortyapi.com/api/character")
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.log(error));
+}
+fetchData();

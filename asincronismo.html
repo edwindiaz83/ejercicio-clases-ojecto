@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asincronismo con Fetch</title>
+  <link rel="stylesheet" href="asincronismo.css">
+</head>
+
+<body>
+
+  <section id="new-post">
+    <form>
+      <div class="form-control">
+        <label for="title">Título</label>
+        <input type="text" id="title" />
+      </div>
+      <div class="form-control">
+        <label for="content">Contenido</label>
+        <textarea rows="3" id="content"></textarea>
+      </div>
+      <button type="submit">POST Content</button>
+    </form>
+  </section>
+
+  <section id="available-posts">
+    <button id="get-posts">GET Content</button>
+    <section id="posts-container" class="posts"></section>
+  </section>
+
+  <script src="asincronismo.js"></script>
+</body>
+
+</html>

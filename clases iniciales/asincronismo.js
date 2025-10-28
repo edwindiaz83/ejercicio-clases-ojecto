@@ -10,7 +10,7 @@
 
 
   // ✅ Función básica para obtener personajes de Rick and Morty
-const listElement = document.querySelector(".posts");
+/*const listElement = document.querySelector(".posts");
 const postTemplate = document.getElementById("single-post");
 const form = document.querySelector("#new-post form");
 const fetchButton = document.querySelector("#available-posts button");
@@ -122,4 +122,6 @@ postList.addEventListener("click", (event) => {
   }
   event.target.closest("article").remove();
    
-});
+});*/
+
+

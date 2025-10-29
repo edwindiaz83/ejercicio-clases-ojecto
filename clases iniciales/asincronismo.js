@@ -1,22 +1,9 @@
-/*fetch("https://jsonplaceholder.typicode.com/posts")
-  .then((response) => response.json())
-  .then((data) => console.log(data));
-
-  fetch("https://jsonplaceholder.typicode.com/posts")
-  .then((response) => response.json())
-  .then((data) => console.log(data));
-*/
-
-
-
-  // ✅ Función básica para obtener personajes de Rick and Morty
-/*const listElement = document.querySelector(".posts");
-const postTemplate = document.getElementById("single-post");
+const listElement = document.querySelector(".posts");
 const form = document.querySelector("#new-post form");
 const fetchButton = document.querySelector("#available-posts button");
 const postList = document.querySelector("#posts-container");
 
-// Función para enviar peticiones HTTP genéricas
+// ✅ Función genérica para peticiones HTTP
 async function sendHTTPRequest(method, url, data) {
   const options = {
     method: method,
@@ -35,11 +22,10 @@ async function sendHTTPRequest(method, url, data) {
     throw new Error(`Error HTTP: ${response.status}`);
   }
 
-  const responseData = await response.json();
-  return responseData;
+  return await response.json();
 }
 
-// Función para obtener y mostrar los posts
+// ✅ Obtener y mostrar posts
 async function fetchPosts() {
   try {
     const responseData = await sendHTTPRequest(
@@ -49,7 +35,7 @@ async function fetchPosts() {
 
     console.log(responseData);
 
-    // Limpia la lista antes de volver a renderizar
+    // Limpia la lista antes de mostrar
     listElement.innerHTML = "";
 
     for (const post of responseData) {
@@ -57,7 +43,6 @@ async function fetchPosts() {
       postContainer.id = post.id;
       postContainer.classList.add("post-item");
 
-      // Mostrar el ID del post
       const idElement = document.createElement("span");
       idElement.textContent = `ID: ${post.id}`;
       idElement.classList.add("post-id");
@@ -69,9 +54,9 @@ async function fetchPosts() {
       body.textContent = post.body;
 
       const button = document.createElement("button");
-      button.textContent = "DELETE Content";
+      button.textContent = "🗑️ Eliminar";
 
-      // Agregar elementos al contenedor
+      // Añadir elementos al contenedor del post
       postContainer.append(idElement, title, body, button);
       listElement.append(postContainer);
     }
@@ -80,13 +65,12 @@ async function fetchPosts() {
   }
 }
 
-// Función para crear un nuevo post
+// ✅ Crear un nuevo post
 async function createPost(title, content) {
-  const userId = Math.random();
   const post = {
     title: title,
     body: content,
-    userId: userId,
+    userId: Math.floor(Math.random() * 1000),
   };
 
   try {
@@ -95,33 +79,43 @@ async function createPost(title, content) {
       "https://jsonplaceholder.typicode.com/posts",
       post
     );
-    console.log("Post creado:", createdPost);
+    console.log("✅ Post creado:", createdPost);
+    alert("Post creado exitosamente 🎉");
   } catch (error) {
     console.error("Error al crear el post:", error);
   }
 }
 
-// Evento para crear post
+// ✅ Evento: Crear post al enviar formulario
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  const title = event.currentTarget.querySelector("#title").value;
-  const content = event.currentTarget.querySelector("#content").value;
+  const title = event.currentTarget.querySelector("#title").value.trim();
+  const content = event.currentTarget.querySelector("#content").value.trim();
 
-  createPost(title, content);
+  if (title && content) {
+    createPost(title, content);
+    form.reset();
+  } else {
+    alert("Por favor completa todos los campos");
+  }
 });
 
-// Evento para obtener posts
+// ✅ Evento: Obtener posts al hacer clic
 fetchButton.addEventListener("click", fetchPosts);
 
-// Evento para detectar clic en botón DELETE
+// ✅ Evento: Eliminar un post
 postList.addEventListener("click", (event) => {
   if (event.target.tagName === "BUTTON") {
-    const postId = event.target.closest("article").id;
-    console.log("ID del post seleccionado:", postId);
-    sendHTTPRequest("DELETE", `https://jsonplaceholder.typicode.com/posts/${postId}`);
+    const postElement = event.target.closest("article");
+    const postId = postElement.id;
+
+    if (confirm(`¿Deseas eliminar el post con ID ${postId}?`)) {
+      sendHTTPRequest("DELETE", `https://jsonplaceholder.typicode.com/posts/${postId}`)
+        .then(() => {
+          console.log(`🗑️ Post ${postId} eliminado`);
+          postElement.remove();
+        })
+        .catch((error) => console.error("Error al eliminar el post:", error));
+    }
   }
-  event.target.closest("article").remove();
-   
-});*/
-
-
+});

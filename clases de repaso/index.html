@@ -1,67 +1,67 @@
 <!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MOKEPON ⚔️</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script src="repaso.js" defer></script>
-  </head>
-  <body>
-    <section id="seleccionar-mascota"></section>
-    <h1  class="titulo">MOKEPON 🔥💧🌱</h1>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>MOKEPON!</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="styles.css">
+        <script src="repaso.js"></script>
+    </head>
+    <body>
+        <section id="seleccionar-mascota">
+            <h1 class="titulo">Mokepon</h1>
+            <h2 class="subtitulo">Elige tu mascota:</h2>
 
-    <!-- 🐾 Selección de Mascota -->
-    <section id="seleccionar-mascota">
-      <h2>Elige tu mascota:</h2>
+            <div class="tarjetas">
+                <label class="tarjeta-de-mokepon" for="hipodoge">
+                    <p>Hipodoge</p>
+                    <img src="assets/mokepons_mokepon_hipodoge_attack.webp" alt="Hipodoge" />
+                </label>
+                <input type="radio" name="mascota" id="hipodoge" />
+                
+                <label class="tarjeta-de-mokepon" for="capipepo">
+                    <p>Capipepo</p>
+                    <img src="assets/mokepons_mokepon_capipepo_attack.webp" alt="Capipepo" />
+                </label>
+                <input type="radio" name="mascota" id="capipepo" />
+                
+                <label class="tarjeta-de-mokepon" for="ratigueya">
+                    <p>Ratigueya</p>
+                    <img src="assets/mokepons_mokepon_ratigueya_attack.webp" alt="Ratigueya" />
+                </label>
+                <input type="radio" name="mascota" id="ratigueya" />
+            </div>
 
-      <label class="tarjeta-mokepon">
-        <input type="radio" name="mascota" id="hipodoge" />
-        Hipodoge 💧
-      </label>
-      <br />
-      <label class="tarjeta-mokepon">
-        <input type="radio" name="mascota" id="capipepo" />
-        Capipepo 🌱
-      </label>
-      <br />
-      <label class="tarjeta-mokepon">
-        <input type="radio" name="mascota" id="ratigueya" />
-        Ratigueya 🔥
-      </label>
-      <br />tarjeta-mokepon<br />
+            <button id="boton-mascota">Seleccionar</button>
+        </section>
 
-      <button id="boton-mascota">Seleccionar Mascota</button>
-    </section>
+        <section id="seleccionar-ataque">
+            <h1 class="titulo">Mokepon</h1>
+            <h2 class="subtitulo">Elige tu ataque:</h2>
 
-    <!-- ⚔️ Seleccionar Ataque -->
-    <section id="seleccionar-ataque" style="display: none">
-      <h2>Elige tu ataque:</h2>
+            <div class="contenedor-ataques">
+                <button id="boton-fuego" disabled>Fuego 🔥</button>
+                <button id="boton-agua" disabled>Agua 💧</button>
+                <button id="boton-tierra" disabled>Tierra 🌱</button>
+            </div>
 
-      <p>
-        🧙 Tu mascota: <span id="mascota-jugador">—</span> |
-        ❤️ Vidas: <span id="vidas-jugador">3</span>
-      </p>
-      <p>
-        👾 Enemigo: <span id="mascota-enemigo">—</span> |
-        ❤️ Vidas: <span id="vidas-enemigo">3</span>
-      </p>
+            <div id="reiniciar">
+                <button id="boton-reiniciar">Reiniciar</button>
+            </div>
 
-      <div class="botones-ataque">
-        <button id="boton-fuego">🔥 Fuego</button>
-        <button id="boton-agua">💧 Agua</button>
-        <button id="boton-tierra">🌱 Tierra</button>
-      </div>
-    </section>
+            <p>Tu mascota 
+                <span id="mascota-jugador"></span> tiene 
+                <span id="vidas-jugador">3</span> vidas
+            </p>
+            <p>Las mascota 
+                <span id="mascota-enemigo"></span> del enemigo </span> tiene
+                <span id="vidas-enemigo">3</span> vidas
+            </p>
+            
+        </section>
 
-    <!-- 📜 Mensajes -->
-    <section id="mensajes">
-      <h3>Mensajes del combate:</h3>
-    </section>
-
-    <!-- 🔄 Reiniciar -->
-    <section id="reiniciar">
-      <button id="boton-reiniciar">🔁 Reiniciar Juego</button>
-    </section>
-  </body>
+        <section id="mensajes">
+        </section>
+        
+    </body>
 </html>

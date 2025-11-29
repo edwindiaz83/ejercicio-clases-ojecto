@@ -30,6 +30,8 @@ let ataquesMokepon;
 let botonFuego;
 let botonAgua;
 let botonTierra;
+let indexAtaqueJugador = [];
+let indexAtaqueEnemigo = [];
 let ataquesMokeponEnemigo=[];
 let botones = [];
 
@@ -155,23 +157,47 @@ function ataqueAleatorioeEnemigo() {
 } else {
     ataqueEnemigo.push('TIERRA');
 }
+console.log(ataqueEnemigo);
+iniciarpelea();
 
 
-	crearMensaje();
+}
+function iniciarpelea() {
+  if (ataqueJugador.length === 5) {
+    combate();
+  
+    
+  }
+    
+}
+function indexAmbosOponentes(jugador, enemigo) {
+  indexAtaqueJugador = ataqueJugador[jugador];
+  indexAtaqueEnemigo = ataqueEnemigo[enemigo];
 }
 
 function combate() {
-	if (ataqueJugador == ataqueEnemigo) return "EMPATE";
-
-	if (
-		(ataqueJugador == 'FUEGO' && ataqueEnemigo == 'TIERRA') ||
-		(ataqueJugador == 'AGUA' && ataqueEnemigo == 'FUEGO') ||
-		(ataqueJugador == 'TIERRA' && ataqueEnemigo == 'AGUA')
-	) {
-		vidasEnemigo--;
+  for (let index = 0; index < ataqueJugador.length; index++) {
+    if (ataqueJugador[index] === ataqueEnemigo[index]) {
+      indexAmbosOponentes(index, index);
+      crearMensaje("EMPATE");
+      
+    } else if (
+      (ataqueJugador[index] == 'FUEGO' && ataqueEnemigo[index] == 'TIERRA')||
+		(ataqueJugador[index] == 'AGUA' && ataqueEnemigo[index] == 'FUEGO')||
+		(ataqueJugador[index] == 'TIERRA' && ataqueEnemigo[index] == 'AGUA')
+    ) {
+      vidasEnemigo--;
 		vidasEnemigoSpan.innerHTML = vidasEnemigo;
-
-		return "GANASTE";
+    indexAmbosOponentes(index, index);
+      crearMensaje("GANASTE");
+    } else {
+      vidasJugador--;
+    vidasJugadorSpan.innerHTML = vidasJugador;
+    indexAmbosOponentes(index, index);
+      crearMensaje("PERDISTE");
+    } 	
+		
+		
 	}
 
 	vidasJugador--;
@@ -180,16 +206,15 @@ function combate() {
 	return "PERDISTE";
 }
 
-function crearMensaje() {
-	const resultado = combate();
-
+function crearMensaje(resultado) {
+	
 	let nuevoAtaqueDelEnemigo = document.createElement('p');
 	let nuevoAtaqueDelJugador = document.createElement('p');
 
 	sectionMensajes.innerHTML = resultado;
 
-	nuevoAtaqueDelJugador.innerHTML = ataqueJugador; // variable global ataqueJugador
-	nuevoAtaqueDelEnemigo.innerHTML = ataqueEnemigo; // variable global ataqueEnemigo
+	nuevoAtaqueDelJugador.innerHTML = indexAtaqueJugador; // variable global ataqueJugador
+	nuevoAtaqueDelEnemigo.innerHTML = indexAtaqueEnemigo; // variable global ataqueEnemigo
 
 	ataquesDelJugador.appendChild(nuevoAtaqueDelJugador);
 	ataquesDelEnemigo.appendChild(nuevoAtaqueDelEnemigo);

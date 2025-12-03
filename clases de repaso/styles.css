@@ -1,60 +1,30 @@
-/* 1. Importación de Fuentes (más eficiente que @import url(...) en la parte superior) */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-/* 2. Variables CSS para colores y consistencia */
-:root {
-    --color-fondo: #041562; /* Azul Oscuro */
-    --color-secundario: #11468F; /* Azul Medio */
-    --color-texto: white;
-    --color-exito: #00FF40; /* Verde Brillo */
-    --color-mensaje: #EEEEEE; /* Gris Claro */
-}
-
-/* --- ESTILOS BASE --- */
 
 body {
     font-family: "Poppins", sans-serif;
-    background-color: var(--color-fondo);
-    margin: 0; /* Asegura que no haya márgenes por defecto */
-    padding: 0;
+    background-color: #041562;
 }
 
-main {
-    /* Contenedor principal para centrar el juego */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Asegura la altura mínima para centrar */
-}
-
-#seleccionar-mascota,
-#seleccionar-ataque {
-    /* Se usa 'flex' pero se quita 100vh de altura para que el contenido fluya verticalmente
-       dentro del main centrado. Si se quiere que sea SIEMPRE pantalla completa, se puede dejar el 100vh. */
+#seleccionar-mascota, #seleccionar-ataque {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 20px;
-    box-sizing: border-box;
+    height: 100vh;
 }
 
 .titulo {
     font-family: "Fredoka", sans-serif;
-    color: var(--color-texto);
+    color: white;
     font-size: 32px;
 }
 
 .subtitulo {
-    color: var(--color-texto);
+    color: white;
     font-size: 20px;
-    margin-bottom: 20px;
 }
 
-/* --- CONTENEDORES DE OPCIONES --- */
-
-.tarjetas,
-.contenedor-ataques {
+.tarjetas, .contenedor-ataques {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
@@ -64,166 +34,98 @@ main {
 .tarjeta-de-mokepon {
     width: 180px;
     height: 100px;
-    background-color: var(--color-secundario);
+    background-color: #11468F;
     padding: 10px;
     box-sizing: border-box;
     border-radius: 20px;
     display: flex;
-    color: var(--color-texto);
+    color: white;
     justify-content: center;
     align-items: center;
-    cursor: pointer; /* Añadido para indicar que es seleccionable */
-    transition: transform 0.2s, border 0.2s; /* Pequeña transición visual */
-}
-
-.tarjeta-de-mokepon:hover {
-    transform: translateY(-2px);
 }
 
 .tarjeta-de-mokepon img {
     width: 80px;
-    margin-right: 5px; /* Separación de la imagen del texto */
 }
 
-/* --- BOTONES Y SELECCIÓN --- */
-
 #boton-mascota {
-    width: 180px;
+    width: 180px;    
     padding: 10px;
     border-radius: 20px;
     background-color: transparent;
-    border: 2px solid var(--color-texto);
-    color: var(--color-texto);
+    border: 2px solid white;
+    color: white;
     font-family: "Poppins", sans-serif;
     margin-top: 20px;
-    cursor: pointer;
 }
 
 .contenedor-ataques button {
-    background-color: var(--color-secundario);
+    background-color: #11468F;
     padding: 10px;
     box-sizing: border-box;
     border-radius: 20px;
-    border: none;
-    width: 180px;
-    color: var(--color-texto);
+    border-color: transparent;
+    width: 80px;
+    color: white;
     font-family: "Poppins", sans-serif;
-    cursor: pointer;
 }
-
-input {
-    display: none; /* Oculta el input de radio */
-}
-
-input:checked + .tarjeta-de-mokepon {
-    border: 2px solid var(--color-exito); /* Borde verde al seleccionar */
-    background-color: color-mix(in srgb, var(--color-secundario) 80%, black); /* Oscurece un poco el fondo al seleccionar */
-}
-
-/* --- ZONA DE MENSAJES Y REINICIO --- */
 
 #mensajes {
     width: 280px;
-    background: var(--color-mensaje);
+    background: #EEEEEE;
     padding: 20px;
     margin-top: 20px;
     border-radius: 20px;
     display: flex;
     align-items: center;
     flex-direction: column;
-    text-align: center;
-    color: var(--color-secundario); /* Color de texto más legible en fondo claro */
 }
 
-#resultado {
-    margin-bottom: 10px;
-    font-weight: 600; /* Hace el resultado más visible */
+input {
+    display: none;
 }
 
-#reiniciar {
-    margin-top: 10px;
+input:checked + .tarjeta-de-mokepon {
+    border: 2px solid #00FF40;
 }
 
 #boton-reiniciar {
     border: none;
-    background-color: transparent; /* Se asegura de que no tenga fondo por defecto */
-    color: var(--color-secundario);
+    color: #11468F;
     font-family: "Poppins", sans-serif;
-    font-weight: 700;
-    cursor: pointer;
 }
-
-/* --- ZONA DE COMBATE/STATS --- */
 
 .ataques {
     display: grid;
-    /* Ajuste de columnas para que el contenido respire mejor */
-    grid-template-columns: 1fr 1fr; 
-    gap: 30px;
-    color: var(--color-texto);
-    margin-top: 30px;
-    text-align: center;
+    grid-template-columns: 100px 100px;
+    color: white;
 }
 
-.ataques-jugador,
-.ataques-enemigo {
+#vidas-jugador, #vidas-enemigo {
+    font-size: 32px;
+    margin-bottom: 0px;
+}
+
+.ataques-jugador, .ataques-enemigo {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.nombre-mascota {
-    font-weight: 700;
-    font-size: 1.2em;
-    margin-top: 0;
+.label-mascota-elegida img {
+    width: 80px;
 }
 
-#vidas-jugador,
-#vidas-enemigo {
-    font-size: 32px;
-    margin-bottom: 0;
-    font-weight: 800; /* Mayor énfasis en las vidas */
+.label-mascota-elegida img {
+    width: 80px;
 }
 
-/* Estilos para el historial de ataques (usando <ul> y <li>) */
-#ataques-del-jugador,
-#ataques-del-enemigo {
-    list-style: none; /* Quita los puntos de la lista */
-    padding: 0;
-    margin: 5px 0 0;
-    font-size: 0.9em;
-    min-height: 80px; /* Asegura que el espacio no se mueva al inyectar ataques */
+.label-mascota-elegida img {
+    width: 80px;
 }
 
-/* --- RESPONSIVE DESIGN --- */
-
-@media (max-width: 600px) {
-    /* Centrar en pantallas más pequeñas */
-    main {
-        align-items: flex-start; /* Mover el contenido hacia arriba */
-        padding-top: 20px;
-    }
-
-    #seleccionar-mascota,
-    #seleccionar-ataque {
-        padding: 0 10px;
-        min-height: auto;
-    }
-
-    .tarjetas,
-    .contenedor-ataques {
-        flex-direction: column;
-    }
-
-    .tarjeta-de-mokepon,
-    .contenedor-ataques button,
-    #boton-mascota {
-        width: 100%; /* Ocupan todo el ancho disponible */
-    }
-
-    .ataques {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        font-size: 0.9em;
-    }
+@media (max-width: 360px) {
+    .tarjetas, .contenedor-ataques {
+        flex-direction: column;
+}
 }
